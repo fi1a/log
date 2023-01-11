@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Fi1a\Log\Formatters;
 
 use Fi1a\Log\RecordInterface;
@@ -9,7 +11,6 @@ use Fi1a\Log\RecordInterface;
  */
 interface FormatterInterface
 {
-
     /**
      * Форматирует запись лога
      *

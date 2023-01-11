@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Fi1a\Log;
 
 use DateTime;
@@ -9,11 +11,16 @@ use DateTime;
  */
 interface RecordInterface
 {
+    /**
+     * @param mixed[] $values
+     * @param mixed[] $context
+     */
     public function __construct(
         DateTime $datetime,
         LevelInterface $level,
+        string $channel,
         string $message,
-        array $context = [],
-        array $extra = []
+        array $values = [],
+        array $context = []
     );
 }
