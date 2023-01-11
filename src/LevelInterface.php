@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Fi1a\Log;
 
 /**
@@ -7,21 +9,21 @@ namespace Fi1a\Log;
  */
 interface LevelInterface
 {
-    const EMERGENCY = 800;
+    public const EMERGENCY = 800;
 
-    const ALERT = 700;
+    public const ALERT = 700;
 
-    const CRITICAL = 600;
+    public const CRITICAL = 600;
 
-    const ERROR = 500;
+    public const ERROR = 500;
 
-    const WARNING = 400;
+    public const WARNING = 400;
 
-    const NOTICE = 300;
+    public const NOTICE = 300;
 
-    const INFO = 200;
+    public const INFO = 200;
 
-    const DEBUG = 100;
+    public const DEBUG = 100;
 
     public function __construct(int $level);
 
