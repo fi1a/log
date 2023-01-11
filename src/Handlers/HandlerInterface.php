@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Fi1a\Log\Handlers;
 
 use Fi1a\Log\LevelInterface;
