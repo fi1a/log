@@ -25,10 +25,35 @@ interface LevelInterface
 
     public const DEBUG = 100;
 
-    public function __construct(int $level);
-
     /**
      * Возвращает уровень логирования
      */
-    public function getLevel(): int;
+    public function getValue(): int;
+
+    /**
+     * Возвращает название уровня логирования
+     */
+    public function getName(): string;
+
+    /**
+     * Возвращает true, если уровень меньше или равен переданному
+     */
+    public function includes(LevelInterface $level): bool;
+
+    /**
+     * Создать объект на основе значения
+     */
+    public static function fromValue(int $level): self;
+
+    /**
+     * Создать объект на основе имени
+     */
+    public static function fromName(string $levelName): self;
+
+    /**
+     * Создать объект на основе имени или значения
+     *
+     * @param string|int $level
+     */
+    public static function from($level): self;
 }

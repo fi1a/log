@@ -84,10 +84,11 @@ interface LoggerInterface
     /**
      * Логирование с определенным уровнем
      *
+     * @param LevelInterface|int|string $level
      * @param mixed[] $values
      * @param mixed[] $context
      */
-    public function log(LevelInterface $level, string $message, array $values = [], array $context = []): bool;
+    public function log($level, string $message, array $values = [], array $context = []): bool;
 
     /**
      * Контекстная информация
