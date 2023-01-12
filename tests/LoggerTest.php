@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Fi1a\Unit\Log;
 
-use Fi1a\Log\Handlers\HandlerInterface;
-use Fi1a\Log\Handlers\StreamHandler;
 use Fi1a\Log\LevelInterface;
 use Fi1a\Log\Logger;
-use Fi1a\Log\LoggerInterface;
 use Fi1a\Unit\Log\TestCases\LoggerTestCase;
 
 /**
@@ -16,24 +13,6 @@ use Fi1a\Unit\Log\TestCases\LoggerTestCase;
  */
 class LoggerTest extends LoggerTestCase
 {
-    /**
-     * Возвращает обработчик
-     *
-     * @param resource $stream
-     */
-    private function getHandler($stream, int $level): HandlerInterface
-    {
-        return new StreamHandler($stream, $level);
-    }
-
-    private function getLogger(HandlerInterface $handler): LoggerInterface
-    {
-        $logger = new Logger('default');
-        $logger->addHandler($handler);
-
-        return $logger;
-    }
-
     /**
      * Система не работает
      */
@@ -442,6 +421,9 @@ class LoggerTest extends LoggerTestCase
         fclose($stream);
     }
 
+    /**
+     * Обработчики
+     */
     public function testHandlers(): void
     {
         $logger = new Logger('default');
@@ -464,5 +446,19 @@ class LoggerTest extends LoggerTestCase
         $this->assertTrue($logger->emergency('message'));
         $this->assertTrue($logger->alert('message'));
         $this->assertFalse($logger->critical('message'));
+    }
+
+    /**
+     * Возвращает название канала
+     */
+    public function testGetChannel(): void
+    {
+        $stream = fopen('php://memory', 'rw');
+        $handler = $this->getHandler(
+            $stream,
+            LevelInterface::EMERGENCY
+        );
+        $logger = $this->getLogger($handler);
+        $this->assertEquals('default', $logger->getChannel());
     }
 }
