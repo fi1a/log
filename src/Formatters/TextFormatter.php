@@ -52,11 +52,13 @@ class TextFormatter implements FormatterInterface
                 'message' => Formatter::format(
                     $record->message,
                     $record->values,
-                    []
+                    [],
+                    false
                 ),
                 'context' => count($record->context) ? json_encode($record->context) : '',
             ],
-            []
+            [],
+            false
         );
     }
 }
