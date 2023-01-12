@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Fi1a\Log\Formatters;
 
-use Fi1a\Log\RecordInterface;
+use Fi1a\Log\Record;
 
 /**
  * Форматирование записи лога
@@ -16,5 +16,5 @@ interface FormatterInterface
      *
      * @return mixed
      */
-    public function format(RecordInterface $record);
+    public function format(Record $record);
 }
