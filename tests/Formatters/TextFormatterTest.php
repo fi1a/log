@@ -24,7 +24,7 @@ class TextFormatterTest extends LoggerTestCase
             '11.01.2023 05:41:56' . PHP_EOL
             . 'default.ALERT[700]' . PHP_EOL
             . 'test testValue message' . PHP_EOL
-            . '{&quot;id&quot;:1}' . PHP_EOL . PHP_EOL,
+            . '{"id":1}' . PHP_EOL . PHP_EOL,
             $formatter->format($this->getRecord())
         );
     }
@@ -42,7 +42,7 @@ class TextFormatterTest extends LoggerTestCase
             '11-01-2023 05:41:56'
             . 'default.ALERT[700] '
             . 'test testValue message '
-            . '{&quot;id&quot;:1}' . PHP_EOL,
+            . '{"id":1}' . PHP_EOL,
             $formatter->format($this->getRecord())
         );
     }
