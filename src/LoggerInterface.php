@@ -115,4 +115,9 @@ interface LoggerInterface
      * @return HandlerInterface[]
      */
     public function getHandlers(): array;
+
+    /**
+     * Возвращает название канала
+     */
+    public function getChannel(): string;
 }

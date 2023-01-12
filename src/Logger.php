@@ -159,4 +159,12 @@ class Logger implements LoggerInterface
     {
         return $this->handlers;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getChannel(): string
+    {
+        return $this->channel;
+    }
 }
