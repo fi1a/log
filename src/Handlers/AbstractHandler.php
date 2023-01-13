@@ -33,7 +33,7 @@ abstract class AbstractHandler implements HandlerInterface
     {
         $this->setLevel($level);
         if ($formatter === null) {
-            $formatter = new TextFormatter();
+            $formatter = $this->getDefaultFormatter();
         }
         $this->formatter = $formatter;
     }
@@ -83,5 +83,13 @@ abstract class AbstractHandler implements HandlerInterface
     public function isHandling(LevelInterface $level): bool
     {
         return $this->level->includes($level);
+    }
+
+    /**
+     * Возвращает объект форматирования по умолчанию для обработчика
+     */
+    protected function getDefaultFormatter(): FormatterInterface
+    {
+        return new TextFormatter();
     }
 }

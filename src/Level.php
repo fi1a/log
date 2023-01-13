@@ -12,7 +12,7 @@ use InvalidArgumentException;
 class Level implements LevelInterface
 {
     /**
-     * @var string[]
+     * @var array<int, string>
      */
     private static $names = [
         LevelInterface::EMERGENCY => 'EMERGENCY',
@@ -23,6 +23,20 @@ class Level implements LevelInterface
         LevelInterface::NOTICE => 'NOTICE',
         LevelInterface::INFO => 'INFO',
         LevelInterface::DEBUG => 'DEBUG',
+    ];
+
+    /**
+     * @var array<int, int>
+     */
+    protected static $rfc5424 = [
+        LevelInterface::EMERGENCY => 0,
+        LevelInterface::ALERT => 1,
+        LevelInterface::CRITICAL => 2,
+        LevelInterface::ERROR => 3,
+        LevelInterface::WARNING => 4,
+        LevelInterface::NOTICE => 5,
+        LevelInterface::INFO => 6,
+        LevelInterface::DEBUG => 7,
     ];
 
     /**
@@ -45,6 +59,14 @@ class Level implements LevelInterface
     public function getValue(): int
     {
         return $this->level;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRFC5424Value(): int
+    {
+        return static::$rfc5424[$this->level];
     }
 
     /**
@@ -84,7 +106,7 @@ class Level implements LevelInterface
             );
         }
 
-        return new self((int) $level);
+        return new self($level);
     }
 
     /**
