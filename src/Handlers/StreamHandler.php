@@ -22,27 +22,27 @@ class StreamHandler extends AbstractHandler
     /**
      * @var resource|null
      */
-    private $stream;
+    protected $stream;
 
     /**
      * @var string|null
      */
-    private $path;
+    protected $path;
 
     /**
      * @var int|null
      */
-    private $permission;
+    protected $permission;
 
     /**
      * @var bool
      */
-    private $lock;
+    protected $lock;
 
     /**
      * @var string|null
      */
-    private $error;
+    protected $error;
 
     /**
      * @param string|resource $stream
