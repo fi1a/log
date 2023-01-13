@@ -13,12 +13,42 @@ use Fi1a\Log\Logger;
 use Fi1a\Log\LoggerInterface;
 use Fi1a\Log\Record;
 use PHPUnit\Framework\TestCase;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 /**
  * Тест-кейс логгирования
  */
 class LoggerTestCase extends TestCase
 {
+    protected $runtimeFolder = __DIR__ . '/../runtime';
+
+    /**
+     * @inheritDoc
+     */
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        if (!is_dir($this->runtimeFolder)) {
+            return;
+        }
+
+        $directoryIterator = new RecursiveDirectoryIterator(
+            $this->runtimeFolder,
+            RecursiveDirectoryIterator::SKIP_DOTS
+        );
+        $filesIterator = new RecursiveIteratorIterator($directoryIterator, RecursiveIteratorIterator::CHILD_FIRST);
+        foreach ($filesIterator as $file) {
+            if ($file->isDir()) {
+                rmdir($file->getRealPath());
+            } else {
+                unlink($file->getRealPath());
+            }
+        }
+        rmdir($this->runtimeFolder);
+    }
+
     /**
      * Возвращает запись лога
      */

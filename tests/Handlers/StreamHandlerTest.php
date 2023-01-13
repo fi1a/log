@@ -11,42 +11,12 @@ use Fi1a\Log\Level;
 use Fi1a\Log\LevelInterface;
 use Fi1a\Unit\Log\TestCases\LoggerTestCase;
 use InvalidArgumentException;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
 
 /**
  * Обработчик логирования в файле (поток)
  */
 class StreamHandlerTest extends LoggerTestCase
 {
-    protected $runtimeFolder = __DIR__ . '/../runtime';
-
-    /**
-     * @inheritDoc
-     */
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-
-        if (!is_dir($this->runtimeFolder)) {
-            return;
-        }
-
-        $directoryIterator = new RecursiveDirectoryIterator(
-            $this->runtimeFolder,
-            RecursiveDirectoryIterator::SKIP_DOTS
-        );
-        $filesIterator = new RecursiveIteratorIterator($directoryIterator, RecursiveIteratorIterator::CHILD_FIRST);
-        foreach ($filesIterator as $file) {
-            if ($file->isDir()) {
-                rmdir($file->getRealPath());
-            } else {
-                unlink($file->getRealPath());
-            }
-        }
-        rmdir($this->runtimeFolder);
-    }
-
     /**
      * По уровню логирования определяет будет ли выполнено оно
      */
