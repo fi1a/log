@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Fi1a\Log\Handlers;
 
 use Fi1a\Log\Formatters\FormatterInterface;
+use Fi1a\Log\Formatters\TextFormatter;
 use Fi1a\Log\LevelInterface;
 use UnexpectedValueException;
 
@@ -95,5 +96,13 @@ abstract class AbstractSyslogHandler extends AbstractHandler
         $this->facility = $facility;
 
         parent::__construct($level, $formatter);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getDefaultFormatter(): FormatterInterface
+    {
+        return new TextFormatter("{{channel}}.{{levelName}}[{{level}}] {{message}} {{context}}\n");
     }
 }
