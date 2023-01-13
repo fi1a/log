@@ -31,6 +31,11 @@ interface LevelInterface
     public function getValue(): int;
 
     /**
+     * Возвращает RFC 5424 значение логирования
+     */
+    public function getRFC5424Value(): int;
+
+    /**
      * Возвращает название уровня логирования
      */
     public function getName(): string;

@@ -99,4 +99,13 @@ class LevelTest extends LoggerTestCase
         $level2 = Level::from(LevelInterface::EMERGENCY);
         $this->assertTrue($level1->includes($level2));
     }
+
+    /**
+     * Возвращает RFC 5424 значение логирования
+     */
+    public function testRFC5424Value(): void
+    {
+        $level = Level::fromValue(LevelInterface::ALERT);
+        $this->assertEquals(1, $level->getRFC5424Value());
+    }
 }
