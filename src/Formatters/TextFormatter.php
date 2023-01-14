@@ -10,7 +10,7 @@ use Fi1a\Log\Record;
 /**
  * Форматирование записи лога в текст
  */
-class TextFormatter implements FormatterInterface
+class TextFormatter extends AbstractFormatter
 {
     public const DEFAULT_FORMAT = "{{datetime}}\n{{channel}}.{{levelName}}[{{level}}]\n{{message}}\n{{context}}\n\n";
 
@@ -19,11 +19,6 @@ class TextFormatter implements FormatterInterface
      */
     private $format;
 
-    /**
-     * @var string
-     */
-    private $dateFormat;
-
     public function __construct(?string $format = null, ?string $dateFormat = null)
     {
         if ($format === null) {
@@ -31,10 +26,7 @@ class TextFormatter implements FormatterInterface
             $format = static::DEFAULT_FORMAT;
         }
         $this->format = $format;
-        if ($dateFormat === null) {
-            $dateFormat = 'd.m.Y H:i:s';
-        }
-        $this->dateFormat = $dateFormat;
+        parent::__construct($dateFormat);
     }
 
     /**
@@ -45,7 +37,7 @@ class TextFormatter implements FormatterInterface
         return Formatter::format(
             $this->format,
             [
-                'datetime' =>  $record->datetime->format($this->dateFormat),
+                'datetime' =>  $this->getDateFormat($record),
                 'channel' => $record->channel,
                 'levelName' => $record->level->getName(),
                 'level' => $record->level->getValue(),
