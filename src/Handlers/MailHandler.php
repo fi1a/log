@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Fi1a\Log\Handlers;
 
 use Fi1a\Log\Formatters\FormatterInterface;
+use Fi1a\Log\Formatters\HtmlFormatter;
 use Fi1a\Log\Formatters\TextFormatter;
 use Fi1a\Log\LevelInterface;
 use Fi1a\Log\Record;
@@ -152,6 +153,12 @@ class MailHandler extends AbstractHandler
             throw new InvalidArgumentException('$contentType не может быть пустым');
         }
 
+        if ($contentType === 'text/html') {
+            $this->formatter = new HtmlFormatter();
+        } elseif ($contentType === 'text/plain') {
+            $this->formatter = new TextFormatter();
+        }
+
         $this->contentType = $contentType;
 
         return $this;
@@ -255,5 +262,13 @@ class MailHandler extends AbstractHandler
             $headers,
             $parameters
         );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getDefaultFormatter(): FormatterInterface
+    {
+        return new HtmlFormatter();
     }
 }

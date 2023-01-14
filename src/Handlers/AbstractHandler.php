@@ -19,12 +19,12 @@ abstract class AbstractHandler implements HandlerInterface
      * @var LevelInterface
      * @psalm-suppress PropertyNotSetInConstructor
      */
-    private $level;
+    protected $level;
 
     /**
      * @var FormatterInterface
      */
-    private $formatter;
+    protected $formatter;
 
     /**
      * @param int|string|LevelInterface $level

@@ -49,14 +49,25 @@ class MailHandlerTest extends LoggerTestCase
     }
 
     /**
-     * Тип контента письма
+     * Тип контента письма text/plain
      */
-    public function testContentType(): void
+    public function testContentTypeText(): void
     {
         $handler = new MailHandler('fake@fi1a.ru', 'test@fi1a.ru');
         $this->assertEquals('text/html', $handler->getContentType());
         $handler->setContentType('text/plain');
         $this->assertEquals('text/plain', $handler->getContentType());
+    }
+
+    /**
+     * Тип контента письма text/html
+     */
+    public function testContentTypeHtml(): void
+    {
+        $handler = new MailHandler('fake@fi1a.ru', 'test@fi1a.ru');
+        $this->assertEquals('text/html', $handler->getContentType());
+        $handler->setContentType('text/html');
+        $this->assertEquals('text/html', $handler->getContentType());
     }
 
     /**
