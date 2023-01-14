@@ -92,4 +92,19 @@ abstract class AbstractHandler implements HandlerInterface
     {
         return new TextFormatter();
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function close(): void
+    {
+    }
+
+    public function __destruct()
+    {
+        try {
+            $this->close();
+        } catch (\Throwable $e) {
+        }
+    }
 }

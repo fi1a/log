@@ -88,6 +88,22 @@ class Level implements LevelInterface
     /**
      * @inheritDoc
      */
+    public function isHigherThan(LevelInterface $level): bool
+    {
+        return $this->getValue() > $level->getValue();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function isLowerThan(LevelInterface $level): bool
+    {
+        return $this->getValue() < $level->getValue();
+    }
+
+    /**
+     * @inheritDoc
+     */
     public static function fromValue(int $level): LevelInterface
     {
         return new self($level);

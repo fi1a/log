@@ -154,6 +154,7 @@ class StreamHandler extends AbstractHandler
      */
     public function close(): void
     {
+        parent::close();
         if ($this->path !== null && is_resource($this->stream)) {
             /** @psalm-suppress InvalidPropertyAssignmentValue */
             fclose($this->stream);
