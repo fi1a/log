@@ -13,6 +13,7 @@
   ],
   "require": {
     "php": "^7.3 || ^8",
+    "ext-json": "*",
     "fi1a/format": "^2.1",
     "fi1a/dependency-injection": "dev-main"
   },
