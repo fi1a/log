@@ -76,7 +76,7 @@ class HtmlFormatter extends AbstractFormatter
      */
     public function format(Record $record)
     {
-        $output = '<div style="padding: 0 10px;">';
+        $output = '<div style="padding: 0 10px; margin-bottom: 10px;">';
         $output .= $this->addTitle($record->level->getName(), $record->level);
         $output .= '<table cellspacing="1" width="100%">';
 
