@@ -116,4 +116,22 @@ class StreamHandlerTest extends LoggerTestCase
         $record = $this->getRecord();
         $handler->handle($record);
     }
+
+    /**
+     * Метод обработчик
+     */
+    public function testHandleCloseException(): void
+    {
+        $filePath = $this->runtimeFolder . '/log.log';
+
+        $handler = $this->getMockBuilder(StreamHandler::class)
+            ->setConstructorArgs([$filePath, LevelInterface::ALERT])
+            ->onlyMethods(['close'])
+            ->getMock();
+
+        $handler->method('close')->willThrowException(new ErrorException());
+
+        $handler->__destruct();
+        $this->assertTrue(true);
+    }
 }

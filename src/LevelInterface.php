@@ -46,6 +46,16 @@ interface LevelInterface
     public function includes(LevelInterface $level): bool;
 
     /**
+     * Возвращает true, если уровень выше переданного
+     */
+    public function isHigherThan(LevelInterface $level): bool;
+
+    /**
+     * Возвращает true, если уровень меньше переданного
+     */
+    public function isLowerThan(LevelInterface $level): bool;
+
+    /**
      * Создать объект на основе значения
      */
     public static function fromValue(int $level): self;

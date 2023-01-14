@@ -101,6 +101,28 @@ class LevelTest extends LoggerTestCase
     }
 
     /**
+     * Возвращает true, если уровень выше переданного
+     */
+    public function testIsHigherThan(): void
+    {
+        $level1 = Level::from(LevelInterface::EMERGENCY);
+        $level2 = Level::from(LevelInterface::ALERT);
+        $this->assertTrue($level1->isHigherThan($level2));
+        $this->assertFalse($level2->isHigherThan($level1));
+    }
+
+    /**
+     * Возвращает true, если уровень выше переданного
+     */
+    public function testIsLowerThan(): void
+    {
+        $level1 = Level::from(LevelInterface::ALERT);
+        $level2 = Level::from(LevelInterface::EMERGENCY);
+        $this->assertTrue($level1->isLowerThan($level2));
+        $this->assertFalse($level2->isLowerThan($level1));
+    }
+
+    /**
      * Возвращает RFC 5424 значение логирования
      */
     public function testRFC5424Value(): void

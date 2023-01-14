@@ -70,6 +70,7 @@ class SyslogHandler extends AbstractSyslogHandler
      */
     public function close(): void
     {
+        parent::close();
         $this->closeSyslog();
     }
 
