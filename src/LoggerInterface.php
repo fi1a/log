@@ -40,7 +40,7 @@ interface LoggerInterface
     public function critical(string $message, array $values = [], array $context = []): bool;
 
     /**
-     * Ошибка которая не требует немедленных действий, но должна быть записана
+     * Ошибка, которая не требует немедленных действий, но должна быть записана
      *
      * @param mixed[] $values
      * @param mixed[] $context
@@ -66,7 +66,7 @@ interface LoggerInterface
     public function notice(string $message, array $values = [], array $context = []): bool;
 
     /**
-     * Какое либо событие
+     * Какое-либо событие
      *
      * @param mixed[] $values
      * @param mixed[] $context
