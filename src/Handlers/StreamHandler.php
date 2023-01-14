@@ -15,7 +15,7 @@ use const LOCK_UN;
 use const PATHINFO_DIRNAME;
 
 /**
- * Обработчик логирования в файле (поток)
+ * Обработчик логирования в файл (поток)
  */
 class StreamHandler extends AbstractHandler
 {

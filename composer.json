@@ -1,7 +1,7 @@
 {
   "name": "fi1a/log",
   "type": "library",
-  "description": "PHP библиотека для логирования",
+  "description": "PHP библиотека ведения журнала (логирования)",
   "keywords": [],
   "homepage": "https://github.com/fi1a/log",
   "license": "MIT",
