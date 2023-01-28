@@ -12,7 +12,8 @@ use Fi1a\Log\Record;
  */
 class TextFormatter extends AbstractFormatter
 {
-    public const DEFAULT_FORMAT = "{{datetime}}\n{{channel}}.{{levelName}}[{{level}}]\n{{message}}\n{{context}}\n\n";
+    public const DEFAULT_FORMAT = "{{datetime}}\n{{channel}}.{{levelName}}[{{level}}]\n{{message}}"
+        . "{{if(context)}}\n{{context}}{{endif}}\n\n";
 
     /**
      * @var string
