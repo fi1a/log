@@ -15,7 +15,7 @@
     "php": "^7.3 || ^8",
     "ext-json": "*",
     "fi1a/format": "^2.1",
-    "fi1a/dependency-injection": "dev-main"
+    "fi1a/dependency-injection": "^1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.3",
